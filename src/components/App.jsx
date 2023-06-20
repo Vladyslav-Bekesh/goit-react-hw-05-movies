@@ -19,7 +19,6 @@ export const App = () => {
       try {
         const responseData = await searchTrending();
         setData(responseData);
-
       } catch (error) {
         console.error('Error occurred during API request:', error);
       }
@@ -31,10 +30,9 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<Home />}>
-            <Route path="filmList" element={<FilmList films={data} />} />
-            <Route path="filmList/:filmId" element={<Film />} />
-          </Route>
+          <Route index element={<Home />} />
+          <Route path="filmList" element={<FilmList films={data} />} />
+          <Route path="filmList/:filmId" element={<Film />} />
 
           <Route path="/movies" element={<Movies />} />
           <Route path="/movies/:filmId" element={<Film />} />
