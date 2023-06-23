@@ -1,12 +1,12 @@
 import React from 'react';
-import { useState, useEffect, useSearchParams } from 'react';
+// import { useState, useEffect, useSearchParams } from 'react';
 
 function Film() {
-  const [data, setData] = useState([]);
-  const [status, setStatus] = useState('idle');
-  const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams);
-  useEffect(() => {}, []);
+  // const [data, setData] = useState([]);
+  // const [status, setStatus] = useState('idle');
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // console.log(searchParams);
+  // useEffect(() => {}, []);
 
   return (
     <div>
