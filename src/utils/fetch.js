@@ -1,15 +1,15 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://api.themoviedb.org/3/';
+export const BASE_URL = 'https://api.themoviedb.org/3/';
+export const ImgAdress = 'https://image.tmdb.org/t/p/w300';
+
 const API_KEY = 'e8683cedff7250ee8b850a9caf6fe30d';
 
-
-  const trending = 'trending/movie/day';
-  const search = 'search/movie';
-  const byId = 'movie/';
-  const actors = '/credits';
-  const reviews = '/reviews';
-
+const trending = 'trending/movie/day';
+const search = 'search/movie';
+const byId = 'movie/';
+const actors = '/credits';
+const reviews = '/reviews';
 
 export async function searchTrending() {
   try {
@@ -46,11 +46,9 @@ export async function searchById(id) {
     const response = await axios.get(`${BASE_URL}${byId}${id}`, {
       params: {
         api_key: API_KEY,
-    
       },
     });
 
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('Error occurred during API request:', error);
@@ -66,7 +64,6 @@ export async function searchCredits(id) {
       },
     });
 
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('Error occurred during API request:', error);
@@ -82,7 +79,6 @@ export async function searchReviews(id) {
       },
     });
 
-    console.log(response.data);
     return response.data;
   } catch (error) {
     console.error('Error occurred during API request:', error);

@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { searchTrending } from '../utils/fetch';
 
@@ -6,6 +6,8 @@ import { searchTrending } from '../utils/fetch';
 import Home from '../pages/Home';
 import Movies from '../pages/Movies';
 import Film from '../pages/Film';
+import Actors from './Actors';
+import Reviews from './Reviews';
 
 // COMPONENTS
 import SharedLayout from './SharedLayout';
@@ -13,8 +15,7 @@ import SharedLayout from './SharedLayout';
 export const App = () => {
   const [data, setData] = useState([]);
   const [status, setStatus] = useState('idle');
-  const navigate = useNavigate();
-  
+
   useEffect(() => {
     setStatus('pending');
 
@@ -32,27 +33,15 @@ export const App = () => {
     fetchData();
   }, []);
 
-  const onFilmClick = id => {
-    console.log(id);
-    navigate(`/movies/${id}`);
-  };
-
   return (
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route
-            index
-            element={
-              <Home data={data} status={status} onFilmClick={onFilmClick} />
-            }
-          />
-
-          <Route path="/movies" element={<Movies />}>
-            <Route path=":movieId" element={<Film />}>
-              <Route path="cast" element={<Film />} />
-              <Route path="reviews" element={<Film />} />
-            </Route>
+          <Route index element={<Home data={data} status={status} />} />
+          <Route path="/movies" element={<Movies />} />
+          <Route path="/movies/:movieId" element={<Film />}>
+            <Route path="cast" element={<Actors />} />
+            <Route path="reviews" element={<Reviews />} />
           </Route>
         </Route>
       </Routes>
