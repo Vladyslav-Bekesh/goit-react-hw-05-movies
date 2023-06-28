@@ -1,6 +1,7 @@
 import { Outlet, NavLink } from 'react-router-dom';
 import { Suspense } from 'react';
- function SharedLayout() {
+import GoBackButton from '../../components/GoBackButton';
+function SharedLayout() {
   return (
     <>
       <header>
@@ -9,6 +10,7 @@ import { Suspense } from 'react';
           <NavLink to="/movies">Movies</NavLink>
         </nav>
       </header>
+      <GoBackButton />
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>

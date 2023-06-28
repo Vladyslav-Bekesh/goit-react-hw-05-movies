@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 
 import { searchById } from '../../utils/fetch';
-import GoBackButton from '../../components/GoBackButton';
 import Loader from '../../components/Loader';
 import FilmCard from '../../components/FilmCard';
 
@@ -30,7 +29,6 @@ function Film() {
 
   return (
     <>
-      <GoBackButton />
       {status === 'pending' && <Loader/>}
       {status === 'rejected' && <h2>error</h2>}
       {status === 'done' && (

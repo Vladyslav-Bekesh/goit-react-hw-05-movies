@@ -4,7 +4,6 @@ import { useSearchParams } from 'react-router-dom';
 import SearchForm from '../../components/SearchForm';
 import Loader from '../../components/Loader';
 import FilmList from '../../components/FilmList';
-import GoBackButton from '../../components/GoBackButton'
 import { searchMovies } from '../../utils/fetch';
 
 function Movies() {
@@ -37,7 +36,6 @@ function Movies() {
 
   return (
     <>
-      <GoBackButton/>
       <SearchForm
         searchParams={searchParams}
         setSearchParams={setSearchParams}
