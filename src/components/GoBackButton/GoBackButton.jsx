@@ -1,11 +1,8 @@
-import React, { useRef } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import React from 'react';
+import { NavLink} from 'react-router-dom';
 
 function BackButton({ to }) {
-  const location = useLocation();
-  const backLinkHref = useRef(location.state?.from ?? '/');
-
-  return <NavLink to={backLinkHref.current}>Back</NavLink>;
+  return <NavLink to={to}>Back</NavLink>;
 }
 
 export default BackButton;

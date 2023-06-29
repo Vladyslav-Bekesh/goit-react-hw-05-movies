@@ -3,7 +3,6 @@ import React from 'react'
 import FilmList from '../../components/FilmList';
 import Loader from '../../components/Loader';
 
-
 function Home({ data, status, onFilmClick }) {
   return (
     <>

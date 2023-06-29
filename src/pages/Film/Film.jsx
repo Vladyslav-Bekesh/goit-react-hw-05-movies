@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import {  useParams } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import {  useLocation, useParams } from 'react-router-dom';
 
 import { searchById } from '../../utils/fetch';
 import Loader from '../../components/Loader';
 import FilmCard from '../../components/FilmCard';
+import GoBackButton from '../../components/GoBackButton';
 
 function Film() {
   const [data, setData] = useState({});
   const [status, setStatus] = useState('idle');
   const { movieId } = useParams();
+
+
+  const location = useLocation();
+  const backLinkHref = useRef(location.state?.from ?? '/');
+  console.log(location.state.from);
 
   useEffect(() => {
     const fetchData = async id => {
@@ -29,7 +35,10 @@ function Film() {
 
   return (
     <>
-      {status === 'pending' && <Loader/>}
+      <GoBackButton to={backLinkHref.current} />
+      {/* <NavLink to={backLinkHref.current}>Back</NavLink> */}
+
+      {status === 'pending' && <Loader />}
       {status === 'rejected' && <h2>error</h2>}
       {status === 'done' && (
         <>
