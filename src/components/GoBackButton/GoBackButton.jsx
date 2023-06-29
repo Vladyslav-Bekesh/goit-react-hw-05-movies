@@ -1,15 +1,11 @@
-import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useRef } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 
-function BackButton() {
+function BackButton({ to }) {
   const location = useLocation();
-  const navigate = useNavigate();
+  const backLinkHref = useRef(location.state?.from ?? '/');
 
-  const handleClick = () => {
-    window.history.back();
-  };
-
-  return <button onClick={handleClick}>Back</button>;
+  return <NavLink to={backLinkHref.current}>Back</NavLink>;
 }
 
 export default BackButton;

@@ -10,7 +10,10 @@ function SharedLayout() {
           <NavLink to="/movies">Movies</NavLink>
         </nav>
       </header>
-      <GoBackButton />
+      <NavLink>
+        <GoBackButton />
+      </NavLink>
+
       <Suspense fallback={<div>Loading...</div>}>
         <Outlet />
       </Suspense>

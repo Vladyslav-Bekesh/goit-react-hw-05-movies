@@ -7,8 +7,6 @@ import { ImgAdress } from '../../utils/fetch';
 
 function FilmCard({ data }) {
   const { original_title, vote_average, overview, poster_path, genres } = data;
-
-  const imageUrl = `${ImgAdress}${poster_path}`;
   
   function makeGenresString(genres) {
     return genres
@@ -17,6 +15,14 @@ function FilmCard({ data }) {
       })
       .join(', ');
   }
+
+  const makeImgSrc = img => {
+    if (img) {
+      return `${ImgAdress}${img}`;
+    } else {
+      return 'https://via.placeholder.com/400x550';
+    }
+  };
   
   return (
     <>
@@ -33,7 +39,7 @@ function FilmCard({ data }) {
         <p>
           <strong>Genres:</strong> {makeGenresString(genres)}
         </p>
-        <img src={imageUrl} alt={original_title} />
+        <img src={makeImgSrc(poster_path)} alt={original_title} />
       </div>
       <ul>
         <li>

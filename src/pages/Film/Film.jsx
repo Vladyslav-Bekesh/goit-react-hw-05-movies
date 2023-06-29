@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 
 import { searchById } from '../../utils/fetch';
 import Loader from '../../components/Loader';
@@ -34,7 +34,6 @@ function Film() {
       {status === 'done' && (
         <>
           <FilmCard data={data} />
-          <NavLink></NavLink>
         </>
       )}
     </>
