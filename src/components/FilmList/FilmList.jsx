@@ -1,33 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
-
+import {  Link, useLocation } from 'react-router-dom';
 
 function FilmList({ films }) {
-  const navigate = useNavigate();
+  const location = useLocation();
 
-
-  const onFilmClick = id => {
-    navigate(`/movies/${id}`);
-  };
-
-  if (films.length !==0) { return (
-    <ul>
-      {films.map(({ id, original_title }) => {
-        return (
-          <li
-            key={id}
-            onClick={() => {
-              onFilmClick(id);
-            }}
-          >
-            <p>{original_title}</p>
-          </li>
-        );
-      })}
-    </ul>
-  )} else {return }
-  
+  if (films.length !== 0) {
+    return (
+      <ul>
+        {films.map(({ id, original_title }) => {
+          return (
+            <Link to={`/movies/${id}`} state={{ from: location }}>
+              <p>{original_title}</p>
+            </Link>
+          );
+        })}
+      </ul>
+    );
+  } else {
+    return;
+  }
 }
 
 FilmList.propTypes = {

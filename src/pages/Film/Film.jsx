@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import {  useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import { searchById } from '../../utils/fetch';
 import Loader from '../../components/Loader';
@@ -11,10 +11,11 @@ function Film() {
   const [status, setStatus] = useState('idle');
   const { movieId } = useParams();
 
-
   const location = useLocation();
   const backLinkHref = useRef(location.state?.from ?? '/');
-  console.log(location.state.from);
+
+  console.log('backLinkHref:', backLinkHref);
+  console.log(location);
 
   useEffect(() => {
     const fetchData = async id => {
@@ -36,7 +37,6 @@ function Film() {
   return (
     <>
       <GoBackButton to={backLinkHref.current} />
-      {/* <NavLink to={backLinkHref.current}>Back</NavLink> */}
 
       {status === 'pending' && <Loader />}
       {status === 'rejected' && <h2>error</h2>}

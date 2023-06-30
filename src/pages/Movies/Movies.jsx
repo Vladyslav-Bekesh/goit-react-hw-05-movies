@@ -44,8 +44,6 @@ function Movies() {
       {status === 'pending' && <Loader />}
       {status === 'rejected' && <h2>error</h2>}
       {status === 'empty' && <h2>¯\_(ツ)_/¯</h2>}
-
-      {/* {status === 'done' && <h2>adasdasd</h2>} */}
       {status === 'done' && <FilmList films={data}></FilmList>}
     </>
   );

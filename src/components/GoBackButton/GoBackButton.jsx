@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink} from 'react-router-dom';
 
-function BackButton({ to }) {
+function GoBackButton({ to }) {
   return <NavLink to={to}>Back</NavLink>;
 }
 
-export default BackButton;
+export default GoBackButton;
